@@ -29,16 +29,28 @@ const Home = () => {
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
-              Discover Your Next
-              <span className="block bg-gradient-hero bg-clip-text text-transparent">
-                Adventure
+            <motion.h1
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2, type: 'spring', stiffness: 60 }}
+            >
+              <span>
+                Discover Your Next
               </span>
-            </h1>
+              <motion.span
+                className="block bg-gradient-hero bg-clip-text text-transparent"
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1, delay: 0.7, type: 'spring', stiffness: 60 }}
+              >
+                Adventure
+              </motion.span>
+            </motion.h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Explore breathtaking destinations, travel tips, and inspiring stories from around the world
             </p>
