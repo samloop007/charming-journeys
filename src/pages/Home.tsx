@@ -4,7 +4,16 @@ import { Link } from 'react-router-dom';
 import BlogCard from '@/components/BlogCard';
 import { Button } from '@/components/ui/button';
 import blogsData from '@/data/blogs.json';
-import heroImage from '@/assets/hero-travel.jpg';
+
+const heroImages = [
+  require('@/assets/blog-greece.jpg'),
+  require('@/assets/blog-iceland.jpg'),
+  require('@/assets/blog-japan.jpg'),
+  require('@/assets/blog-morocco.jpg'),
+  require('@/assets/blog-mountains.jpg'),
+  require('@/assets/blog-safari.jpg'),
+  require('@/assets/hero-travel.jpg'),
+];
 
 const Home = () => {
   const featuredBlogs = blogsData.slice(0, 3);
@@ -15,15 +24,30 @@ const Home = () => {
     { name: 'Wildlife', icon: Camera, count: 4 },
   ];
 
+
+  // Infinite slider state
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroImages.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen">
       <section className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Travel Hero"
-            className="w-full h-full object-cover"
-          />
+        <div className="absolute inset-0 transition-all duration-1000">
+          {heroImages.map((img, idx) => (
+            <img
+              key={idx}
+              src={img}
+              alt={`Travel Hero ${idx + 1}`}
+              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${current === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              draggable={false}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         </div>
 
