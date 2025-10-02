@@ -13,6 +13,18 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      backgroundImage: {
+        'gradient-hero': 'var(--gradient-hero)',
+        'gradient-sunset': 'var(--gradient-sunset)',
+        'gradient-ocean': 'var(--gradient-ocean)',
+      },
+      boxShadow: {
+        'card': 'var(--shadow-card)',
+        'card-hover': 'var(--shadow-card-hover)',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
