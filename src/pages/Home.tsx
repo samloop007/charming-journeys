@@ -56,8 +56,6 @@ const Home = () => {
               draggable={false}
             />
           ))}
-          {/* Black overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/40 z-20 pointer-events-none" />
           {/* Overlay: gradient + dark layer for better text contrast */}
         </div>
 
