@@ -43,6 +43,27 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
+  // Dynamic hero texts for each background
+  const heroHeadings = [
+    ["Discover ", "Your Next", "Adventure Tales"],
+    ["Experience ", "Greece's Magic", "Mediterranean Dreams"],
+    ["Unveil ", "Iceland's Wonders", "Land of Fire & Ice"],
+    ["Journey Through ", "Japan's Beauty", "Land of the Rising Sun"],
+    ["Explore ", "Morocco's Mystique", "Saharan Adventures"],
+    ["Conquer ", "Majestic Mountains", "Peaks & Valleys"],
+    ["Embark on ", "African Safari", "Wildlife Encounters"],
+  ];
+
+  const heroSubtexts = [
+    "Explore breathtaking destinations, travel tips, and inspiring stories from around the world",
+    "Sail the Aegean, wander ancient ruins, and taste the flavors of Greece",
+    "Chase waterfalls, see glaciers, and witness the northern lights in Iceland",
+    "From cherry blossoms to neon cities, discover the wonders of Japan",
+    "Lose yourself in vibrant souks, desert dunes, and Moroccan culture",
+    "Breathe the crisp air and find adventure in the world's great mountains",
+    "Spot the Big Five and experience the thrill of a true African safari",
+  ];
+
   return (
     <div className="min-h-screen">
       <section className="relative h-[600px] md:h-[700px] flex items-center justify-center overflow-hidden">
@@ -52,7 +73,9 @@ const Home = () => {
               key={idx}
               src={img}
               alt={`Travel Hero ${idx + 1}`}
-              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${currentBg === idx ? 'opacity-60 z-10' : 'opacity-0 z-0'} drop-shadow-2xl`}
+              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${
+                currentBg === idx ? "opacity-60 z-10" : "opacity-0 z-0"
+              } drop-shadow-2xl`}
               draggable={false}
             />
           ))}
@@ -77,7 +100,10 @@ const Home = () => {
               }}
             >
               <span>
-                Discover <span className="text-yellow-400">Your Next</span>
+                {heroHeadings[currentBg][0]}
+                <span className="text-yellow-400">
+                  {heroHeadings[currentBg][1]}
+                </span>
               </span>
               <motion.span
                 className="block bg-gradient-hero bg-clip-text text-transparent"
@@ -90,12 +116,11 @@ const Home = () => {
                   stiffness: 60,
                 }}
               >
-                Adventure
+                {heroHeadings[currentBg][2]}
               </motion.span>
             </motion.h1>
             <p className="text-lg md:text-xl text-white font-semibold mb-8 max-w-2xl mx-auto">
-              Explore breathtaking destinations, travel tips, and inspiring
-              stories from around the world
+              {heroSubtexts[currentBg]}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/blogs">
@@ -198,7 +223,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-ocean text-white">
+      <section className="py-16 bg-yellow-500 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
