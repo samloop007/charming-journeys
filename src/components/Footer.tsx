@@ -9,8 +9,8 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Compass className="h-6 w-6 text-primary" />
-              <span className="text-lg font-bold bg-gradient-hero bg-clip-text text-transparent">
-                Wanderlust Tales
+              <span className="text-lg font-bold">
+                Wanderlust <span className="text-yellow-400">Tales</span>
               </span>
             </div>
             <p className="text-sm text-muted-foreground">

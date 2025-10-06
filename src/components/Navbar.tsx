@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Moon, Sun, Compass } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { useTheme } from '@/contexts/ThemeContext';
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Moon, Sun, Compass } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,22 +11,22 @@ const Navbar = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Blogs', path: '/blogs' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    { name: "Home", path: "/" },
+    { name: "Blogs", path: "/blogs" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2 group">
             <Compass className="h-7 w-7 text-primary transition-transform group-hover:rotate-180 duration-500" />
-            <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
-              Wanderlust Tales
+            <span className="text-xl font-bold">
+              Wanderlust <span className="text-yellow-400">Tales</span>
             </span>
           </Link>
 
@@ -36,7 +36,7 @@ const Navbar = () => {
                 key={item.path}
                 to={item.path}
                 className={`text-sm font-medium transition-colors hover:text-primary relative ${
-                  isActive(item.path) ? 'text-primary' : 'text-foreground'
+                  isActive(item.path) ? "text-primary" : "text-foreground"
                 }`}
               >
                 {item.name}
@@ -57,7 +57,7 @@ const Navbar = () => {
               onClick={toggleTheme}
               className="hidden md:inline-flex"
             >
-              {theme === 'light' ? (
+              {theme === "light" ? (
                 <Moon className="h-5 w-5" />
               ) : (
                 <Sun className="h-5 w-5" />
@@ -70,7 +70,11 @@ const Navbar = () => {
               className="md:hidden"
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -79,7 +83,7 @@ const Navbar = () => {
           {isOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden border-t border-border"
             >
@@ -91,8 +95,8 @@ const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     className={`block px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                       isActive(item.path)
-                        ? 'bg-primary text-primary-foreground'
-                        : 'hover:bg-muted'
+                        ? "bg-primary text-primary-foreground"
+                        : "hover:bg-muted"
                     }`}
                   >
                     {item.name}
@@ -105,7 +109,7 @@ const Navbar = () => {
                     onClick={toggleTheme}
                     className="w-full justify-start gap-2"
                   >
-                    {theme === 'light' ? (
+                    {theme === "light" ? (
                       <>
                         <Moon className="h-4 w-4" />
                         Dark Mode
