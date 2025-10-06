@@ -52,7 +52,7 @@ const Home = () => {
               key={idx}
               src={img}
               alt={`Travel Hero ${idx + 1}`}
-              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${currentBg === idx ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ${currentBg === idx ? 'opacity-60 z-10' : 'opacity-0 z-0'} drop-shadow-2xl`}
               draggable={false}
             />
           ))}
@@ -66,7 +66,7 @@ const Home = () => {
             transition={{ duration: 1, ease: "easeOut" }}
           >
             <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white dark:text-black"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -76,7 +76,9 @@ const Home = () => {
                 stiffness: 60,
               }}
             >
-              <span>Discover Your Next</span>
+              <span>
+                Discover <span className="text-yellow-400">Your Next</span>
+              </span>
               <motion.span
                 className="block bg-gradient-hero bg-clip-text text-transparent"
                 initial={{ opacity: 0, x: -40 }}
@@ -91,7 +93,7 @@ const Home = () => {
                 Adventure
               </motion.span>
             </motion.h1>
-            <p className="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white font-semibold mb-8 max-w-2xl mx-auto">
               Explore breathtaking destinations, travel tips, and inspiring
               stories from around the world
             </p>
